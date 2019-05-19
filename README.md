@@ -1,0 +1,2 @@
+# dingyu.com
+my blog
