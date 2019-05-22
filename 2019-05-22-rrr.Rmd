@@ -1,0 +1,28 @@
+---
+title: "RRR"
+author: ''
+date: '2019-05-22'
+slug: rrr
+tags: []
+categories: []
+---
+
+```{r}
+library(xml2)#加载包
+library(rvest)#加载包
+url<-'http://www.gov.cn/zhuanti/2018lh/2018zfgzbg/zfgzbg.htm'
+web<-read_html(url,encoding = "utf-8")#读取数据，规定编码
+library(jiebaRD)#加载包
+library(jiebaR)#加载包
+engine_s<-worker(stop_word = "C:\\dheyw\\pac\\stopwords.txt")#初始化分词引擎并加载停用词。
+seg<-segment(Position,engine_s)#分词
+f<-freq(seg)#统计词频
+f<-f[order(f[2],decreasing = TRUE),]#根据词频降序排列
+print(f)
+library(yaml)#加载包
+library(wordcloud2)#加载包
+f1<-f[1:100,]#提取前100词
+wordcloud2(f1,size = 0.5,shape='star')#形状设置为星形
+
+
+```
